@@ -14,9 +14,9 @@ You have to do some manual steps to prepare your Windows installation. Please in
 - Ubuntu installed as subsystem (preferred 20.04 LTS)
 - docker installed with wsl 2 backend (https://docs.docker.com/desktop/windows/install/)
 
-### Ubuntu
+### Ubuntu / Windows-Subsystem
 
-- no specific requirements ;)
+- root access
 
 ## Tools
 
@@ -29,6 +29,15 @@ You have to do some manual steps to prepare your Windows installation. Please in
 
 ## Installation
 
-```bash
+```shell
 ./install.sh
+```
+
+This will install all mentioned tools on your local machine. The output should look like
+
+```shell
+azure...installed.
+aws...installed.
+sdkman...installed.
+zsh...installed.
 ```
