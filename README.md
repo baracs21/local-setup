@@ -26,6 +26,7 @@ You have to do some manual steps to prepare your Windows installation. Please in
 - aws cli (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - azure cli (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - sdkman (https://sdkman.io/)
+- taskfile (https://taskfile.dev/#/)
 
 ## Installation
 

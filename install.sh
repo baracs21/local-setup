@@ -44,5 +44,6 @@ update
 install azure
 install aws
 install sdkman
+install taskfile
 install zsh
 install taskfile

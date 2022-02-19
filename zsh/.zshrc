@@ -32,6 +32,3 @@ autoload -U +X bashcompinit && bashcompinit
 source /etc/bash_completion.d/azure-cli
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

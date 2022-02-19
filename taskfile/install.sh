@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-set -euox pipefail
+set -euo pipefail
 
-sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+install() {
+  if task --version; then
+    sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+  fi
+}
 
+install
