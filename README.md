@@ -18,7 +18,9 @@ You have to do some manual steps to prepare your Windows installation. Please in
 
 - root access
 
-## Tools
+## Tools / Libraries
+
+In this section are the general tools which can be installed either in plain ubuntu or the wsl. Some tools like docker will not be installed by this script, because on Windows you can use the docker desktop with the wsl backend. In this case, the installation will not be triggered by the wsl. In Ubuntu you can trigger the installation directly from your bash. 
 
 - zsh (https://zsh.sourceforge.io/)
     - oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
@@ -27,18 +29,39 @@ You have to do some manual steps to prepare your Windows installation. Please in
 - azure cli (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - sdkman (https://sdkman.io/)
 - taskfile (https://taskfile.dev/#/)
+- node/npm (https://nodejs.org/en/, https://nodejs.org/en/)
+- jq (https://stedolan.github.io/jq/)
+- golang (https://go.dev/)
+- python3 (https://www.python.org/)
 
-## Installation
+### Installation
+
+Use the following command to start the installation:
 
 ```shell
-./install.sh
+sudo ./install.sh
 ```
 
-This will install all mentioned tools on your local machine. The output should look like
+This will start the installation of all tools from the section before on your local machine. Furthermore, it will update all dependencies on your system beforehand. The output should look like:
 
 ```shell
 azure...installed.
 aws...installed.
 sdkman...installed.
 zsh...installed.
+update system....done
 ```
+
+If you forgot to start the command with `sudo` an error will occur:
+
+```shell
+./install.sh is not running as root. Try using sudo.
+```
+
+## Local Development Tools
+
+- IntelliJ Ultimate (https://www.jetbrains.com/de-de/idea/)
+- Visual Studio Code (https://code.visualstudio.com/)
+- Google Chrome (https://www.google.com/intl/de_de/chrome/)
+- Docker Desktop (https://www.docker.com/products/docker-desktop) only on Windows
+- NoSQL Workbench for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html)
