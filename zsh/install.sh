@@ -4,12 +4,12 @@ set -euo pipefail
 
 install_zsh() {
   if ! command -v zsh; then
-    sudo apt install -y zsh
+    apt install -y zsh
     zsh_path=$(command -v zsh)
     chsh -s "$zsh_path"
   else
-    sudo apt update
-    sudo apt upgrade -y
+    apt update
+    apt upgrade -y
   fi
 
   if ! grep ZSH_VERSION <"$HOME"/.bashrc; then
@@ -29,7 +29,7 @@ install_oh_my_zsh() {
 
 install_antibody() {
   if ! which antibody; then
-    curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
+    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
   fi
 }
 
