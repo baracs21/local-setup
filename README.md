@@ -26,6 +26,7 @@ In this section are the general tools which can be installed either in plain ubu
     - oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
     - antibody (https://getantibody.github.io/)
 - aws cli (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- aws cdk (https://docs.aws.amazon.com/cdk/v2/guide/home.html)
 - azure cli (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - sdkman (https://sdkman.io/)
 - taskfile (https://taskfile.dev/#/)
@@ -33,6 +34,7 @@ In this section are the general tools which can be installed either in plain ubu
 - jq (https://stedolan.github.io/jq/)
 - golang (https://go.dev/)
 - python3 (https://www.python.org/)
+- tldr (https://tldr.sh/)
 
 ### Installation
 

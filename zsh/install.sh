@@ -4,12 +4,12 @@ set -euo pipefail
 
 install_zsh() {
   if ! command -v zsh; then
-    apt install -y zsh
+    sudo apt install -y zsh
     zsh_path=$(command -v zsh)
     chsh -s "$zsh_path"
   else
-    apt update
-    apt upgrade -y
+    sudo apt update
+    sudo apt upgrade -y
   fi
 
   if ! grep ZSH_VERSION <"$HOME"/.bashrc; then
@@ -39,10 +39,10 @@ setup_zsh() {
     curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
   fi
 
-  cp .bash_aliases ~/.bash_aliases
-  cp .zshrc ~/.zshrc
-  cp .zsh_plugins.txt ~/.zsh_plugins.txt
-  cp .p10k.zsh ~/.p10k.zsh
+  cp .bash_aliases "$HOME"/.bash_aliases
+  cp .zshrc "$HOME"/.zshrc
+  cp .zsh_plugins.txt "$HOME"/.zsh_plugins.txt
+  cp .p10k.zsh "$HOME"/.p10k.zsh
 }
 
 install_zsh

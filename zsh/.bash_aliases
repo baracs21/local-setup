@@ -1,1 +1,5 @@
-alias cheat='~/.custom_scripts/cheat.sh'
+alias cheat="cheat $1"
+
+function cheat() {
+    curl cheat.sh/$1
+}

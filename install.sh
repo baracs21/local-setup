@@ -2,11 +2,12 @@
 
 set -eu
 
-if [[ $EUID -ne 0 ]]; then
-  echo "$0 is not running as root. Try using sudo."
-  exit 2
-fi
+#if [[ $EUID -ne 0 ]]; then
+#  echo "$0 is not running as root. Try using sudo."
+#  exit 2
+#fi
 
+sudo -v
 ROOT_DIR=$PWD
 
 # Colors
@@ -16,8 +17,8 @@ NC='\033[0m'
 
 update() {
   printf 'update system...'
-  apt update &>/dev/null
-  apt upgrade -y &>/dev/null &
+  sudo apt update &>/dev/null
+  sudo apt upgrade -y &>/dev/null &
 
   UPDATE_PID=$!
   while ps -ef | awk '{print $2}' | grep $UPDATE_PID &>/dev/null; do
@@ -43,38 +44,66 @@ install() {
 }
 
 install_common() {
-  apt update &>/dev/null
-  apt install software-properties-common -y &>/dev/null
+  sudo apt update &>/dev/null
+  sudo apt install software-properties-common -y &>/dev/null
 }
 
 add_repositories() {
-  add-apt-repository ppa:deadsnakes/ppa -y &>/dev/null
-  add-apt-repository ppa:longsleep/golang-backports -y &>/dev/null
-  # shellcheck disable=SC2059
-  printf "PPAs...${GREEN}added${NC}\n"
+  echo "Add PPA repositories"
+  echo "----------------------------------------"
+  ppas=$*
+  for ppa in $ppas; do
+    sudo add-apt-repository "$ppa" -y &>/dev/null
+    # shellcheck disable=SC2059
+    printf "$ppa...${GREEN}added${NC}\n"
+  done
+  echo "----------------------------------------"
 }
 
 install_packages() {
+  echo "Install apt packages"
+  echo "----------------------------------------"
   packages=$*
-  apt update &>/dev/null
-  apt install "$@" -y &>/dev/null
+  sudo apt update &>/dev/null
+  sudo apt install "$@" -y &>/dev/null
 
   for package in $packages; do
     printf "%s..." "$package"
-    apt install "$package" -y &>/dev/null
     # shellcheck disable=SC2059
     printf "${GREEN}installed${NC}\n"
   done
-
+  echo "----------------------------------------"
 }
 
-add_repositories
+install_npm_packages() {
+  echo "Install npm packages"
+  echo "----------------------------------------"
+  packages=$*
+  sudo npm i -g "$@" -y &>/dev/null
+  for package in $packages; do
+    printf "%s..." "$package"
+    # shellcheck disable=SC2059
+    printf "${GREEN}installed${NC}\n"
+  done
+  echo "----------------------------------------"
+}
+
+add_repositories \
+  ppa:deadsnakes/ppa \
+  ppa:longsleep/golang-backports
 install_common
+install_packages \
+  golang-go \
+  jq \
+  python3 \
+  python3-pip
 install azure
-install aws
 install sdkman
 install taskfile
 install node
+install aws
+install_npm_packages \
+  aws-cdk \
+  tldr
 install zsh
-install_packages golang-go jq python3 python3-pip
 update
