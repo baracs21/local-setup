@@ -102,6 +102,7 @@ install sdkman
 install taskfile
 install node
 install aws
+install drawio
 install_npm_packages \
   aws-cdk \
   tldr
