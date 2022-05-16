@@ -96,7 +96,8 @@ install_packages \
   golang-go \
   jq \
   python3 \
-  python3-pip
+  python3-pip \
+  mongo-tools
 install azure
 install sdkman
 install taskfile
