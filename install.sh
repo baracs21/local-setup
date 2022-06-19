@@ -104,6 +104,7 @@ install taskfile
 install node
 install aws
 install drawio
+install mongodb
 install_npm_packages \
   aws-cdk \
   tldr
